@@ -1,0 +1,55 @@
+body {
+      font-family: "Times New Roman", serif;
+      margin: 40px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      text-align: center;
+    }
+    .header div {
+      width: 45%;
+    }
+    .header h3, .header h4 {
+      margin: 4px 0;
+    }
+    .underline {
+      border-bottom: 1.5px solid black;
+      width: 100%;
+      margin: 2px auto 6px auto;
+    }
+    h2 {
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+    .info {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 15px 0;
+      font-size: 14px;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 6px;
+      text-align: center;
+    }
+    .subject {
+      text-align: left;
+    }
+    .semester {
+      font-weight: bold;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .avg {
+      font-style: italic;
+      margin-top: 10px;
+    }

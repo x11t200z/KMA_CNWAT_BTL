@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Điều hướng iframe đa cấp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            background: #2c3e50;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            padding: 10px 15px;
+            background: #34495e;
+            border-radius: 4px;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        
+        nav a:hover {
+            background: #4a6741;
+        }
+        
+        .iframe-container {
+            padding: 20px;
+            height: 600px;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            background: white;
+        }
+        
+        .example-page {
+            padding: 20px;
+            background: #ecf0f1;
+            min-height: 400px;
+        }
+        
+        .example-list {
+            background: white;
+            padding: 20px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        
+        .example-list a {
+            display: block;
+            padding: 10px 15px;
+            margin: 5px 0;
+            background: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .example-list a:hover {
+            background: #2980b9;
+        }
+        
+        .specific-example {
+            background: #e8f5e8;
+            padding: 30px;
+            border-left: 5px solid #27ae60;
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background: #95a5a6;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        
+        .back-link:hover {
+            background: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Trang chủ (home.html) -->
+        <div id="home-page">
+            <nav>
+                <h3 style="color: white; margin: 0; display: inline-block; margin-right: 30px;">Trang chủ</h3>
+                <a href="#" onclick="loadIntoIframe('example1')">Example 1</a>
+                <a href="#" onclick="loadIntoIframe('example2')">Example 2</a>
+                <a href="#" onclick="loadIntoIframe('example3')">Example 3</a>
+            </nav>
+            
+            <div class="iframe-container">
+                <iframe name="mainContent" id="mainContent" src="about:blank"></iframe>
+            </div>
+        </div>
+
+        <!-- Nội dung các trang ẩn (sẽ được load vào iframe) -->
+        
+        <!-- Example 1 -->
+        <div id="example1-content" style="display: none;">
+            <div class="example-page">
+                <h2>Example 1</h2>
+                <p>Đây là nội dung của Example 1.</p>
+                <p>Trang này không có liên kết con nào khác.</p>
+            </div>
+        </div>
+
+        <!-- Example 2 -->
+        <div id="example2-content" style="display: none;">
+            <div class="example-page">
+                <h2>Example 2 - Danh sách ví dụ</h2>
+                <p>Chọn một ví dụ cụ thể từ danh sách bên dưới:</p>
+                
+                <div class="example-list">
+                    <a href="#" onclick="parent.loadIntoIframe('specific-example-a')" target="_self">Ví dụ A - Xử lý form</a>
+                    <a href="#" onclick="parent.loadIntoIframe('specific-example-b')" target="_self">Ví dụ B - Animation CSS</a>
+                    <a href="#" onclick="parent.loadIntoIframe('specific-example-c')" target="_self">Ví dụ C - API Integration</a>
+                    <a href="#" onclick="parent.loadIntoIframe('specific-example-d')" target="_self">Ví dụ D - Chart.js</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Example 3 -->
+        <div id="example3-content" style="display: none;">
+            <div class="example-page">
+                <h2>Example 3</h2>
+                <p>Đây là nội dung của Example 3.</p>
+                <div class="example-list">
+                    <a href="#" onclick="parent.loadIntoIframe('specific-example-e')" target="_self">Sub Example E</a>
+                    <a href="#" onclick="parent.loadIntoIframe('specific-example-f')" target="_self">Sub Example F</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Các ví dụ cụ thể -->
+        <div id="specific-example-a-content" style="display: none;">
+            <div class="specific-example">
+                <h2>Ví dụ A - Xử lý form</h2>
+                <p>Đây là nội dung chi tiết về cách xử lý form trong JavaScript.</p>
+                <div style="background: #fff; padding: 20px; margin: 15px 0; border-radius: 4px;">
+                    <h4>Demo Form:</h4>
+                    <input type="text" placeholder="Nhập tên..." style="padding: 10px; margin: 5px; border: 1px solid #ddd; border-radius: 4px;">
+                    <button onclick="alert('Form submitted!')" style="padding: 10px 15px; background: #27ae60; color: white; border: none; border-radius: 4px; cursor: pointer;">Submit</button>
+                </div>
+                <a href="#" onclick="parent.loadIntoIframe('example2')" class="back-link">← Quay lại Example 2</a>
+            </div>
+        </div>
+
+        <div id="specific-example-b-content" style="display: none;">
+            <div class="specific-example">
+                <h2>Ví dụ B - Animation CSS</h2>
+                <p>Ví dụ về animation và transition trong CSS.</p>
+                <div style="background: #fff; padding: 20px; margin: 15px 0; border-radius: 4px;">
+                    <div id="animatedBox" style="width: 100px; height: 100px; background: #e74c3c; margin: 20px auto; transition: all 0.3s; border-radius: 4px; cursor: pointer;" onclick="this.style.transform = this.style.transform ? '' : 'rotate(45deg) scale(1.2)'">
+                        Click me!
+                    </div>
+                </div>
+                <a href="#" onclick="parent.loadIntoIframe('example2')" class="back-link">← Quay lại Example 2</a>
+            </div>
+        </div>
+
+        <div id="specific-example-c-content" style="display: none;">
+            <div class="specific-example">
+                <h2>Ví dụ C - API Integration</h2>
+                <p>Hướng dẫn tích hợp API và xử lý dữ liệu JSON.</p>
+                <div style="background: #fff; padding: 20px; margin: 15px 0; border-radius: 4px;">
+                    <button onclick="fetchData()" style="padding: 10px 15px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">Fetch API Data</button>
+                    <div id="apiResult" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 4px; min-height: 50px;"></div>
+                </div>
+                <a href="#" onclick="parent.loadIntoIframe('example2')" class="back-link">← Quay lại Example 2</a>
+            </div>
+        </div>
+
+        <div id="specific-example-d-content" style="display: none;">
+            <div class="specific-example">
+                <h2>Ví dụ D - Chart.js</h2>
+                <p>Demo về việc tạo biểu đồ với Chart.js.</p>
+                <div style="background: #fff; padding: 20px; margin: 15px 0; border-radius: 4px; text-align: center;">
+                    <div style="width: 200px; height: 200px; background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24); margin: 0 auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
+                        Chart Demo
+                    </div>
+                </div>
+                <a href="#" onclick="parent.loadIntoIframe('example2')" class="back-link">← Quay lại Example 2</a>
+            </div>
+        </div>
+
+        <div id="specific-example-e-content" style="display: none;">
+            <div class="specific-example">
+                <h2>Sub Example E</h2>
+                <p>Nội dung của Sub Example E từ Example 3.</p>
+                <a href="#" onclick="parent.loadIntoIframe('example3')" class="back-link">← Quay lại Example 3</a>
+            </div>
+        </div>
+
+        <div id="specific-example-f-content" style="display: none;">
+            <div class="specific-example">
+                <h2>Sub Example F</h2>
+                <p>Nội dung của Sub Example F từ Example 3.</p>
+                <a href="#" onclick="parent.loadIntoIframe('example3')" class="back-link">← Quay lại Example 3</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Hàm chính để load nội dung vào iframe
+        function loadIntoIframe(contentId) {
+            const iframe = document.getElementById('mainContent');
+            const content = document.getElementById(contentId + '-content');
+            
+            if (content) {
+                // Tạo một blob URL với nội dung HTML
+                const htmlContent = `
+                    <!DOCTYPE html>
+                    <html lang="vi">
+                    <head>
+                        <meta charset="UTF-8">
+                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                        <title>${contentId}</title>
+                        <style>
+                            body { margin: 0; font-family: Arial, sans-serif; }
+                            .example-page { padding: 20px; background: #ecf0f1; min-height: 400px; }
+                            .example-list { background: white; padding: 20px; border-radius: 4px; margin-top: 20px; }
+                            .example-list a { display: block; padding: 10px 15px; margin: 5px 0; background: #3498db; color: white; text-decoration: none; border-radius: 4px; transition: background 0.3s; }
+                            .example-list a:hover { background: #2980b9; }
+                            .specific-example { background: #e8f5e8; padding: 30px; border-left: 5px solid #27ae60; }
+                            .back-link { display: inline-block; margin-top: 20px; padding: 10px 15px; background: #95a5a6; color: white; text-decoration: none; border-radius: 4px; }
+                            .back-link:hover { background: #7f8c8d; }
+                        </style>
+                    </head>
+                    <body>
+                        ${content.innerHTML}
+                        <script>
+                            function fetchData() {
+                                const result = document.getElementById('apiResult');
+                                if (result) {
+                                    result.innerHTML = 'Loading...';
+                                    setTimeout(() => {
+                                        result.innerHTML = JSON.stringify({
+                                            status: 'success',
+                                            data: 'Sample API response',
+                                            timestamp: new Date().toISOString()
+                                        }, null, 2);
+                                    }, 1000);
+                                }
+                            }
+                        </script>
+                    </body>
+                    </html>
+                `;
+                
+                const blob = new Blob([htmlContent], {type: 'text/html'});
+                const url = URL.createObjectURL(blob);
+                iframe.src = url;
+                
+                // Cleanup blob URL sau khi load xong
+                iframe.onload = function() {
+                    setTimeout(() => URL.revokeObjectURL(url), 1000);
+                };
+            }
+        }
+
+        // Load trang mặc định
+        window.onload = function() {
+            loadIntoIframe('example2');
+        };
+    </script>
+</body>
+</html>

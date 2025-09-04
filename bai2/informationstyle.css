@@ -1,0 +1,236 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+.lexend-text {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    /* có thể đổi thành 700, 300 tùy bạn đã import */
+    font-style: normal;
+}
+.material-icons {
+  font-size: 24px; 
+  margin-top: 30px;
+  vertical-align: middle; /* căn giữa so với text */
+}
+html,
+body {
+    font-family: Lexend, sans-serif;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+
+section {
+    height: 100vh;
+}
+
+.topnav {
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.topnav #myLinks {
+    display: none;
+}
+
+.topnav a {
+    float: left;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a.icon {
+    float: left;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.section_about {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url("/img/inforhomepagebanner.jpg") no-repeat;
+    background-size: cover;
+    background-position: 25% 55%;
+    padding: 0;
+    margin: 0;
+    /* max-width: 100%; */
+}
+
+#homepageinfo {
+    text-align: left;
+    color: white;
+    position: absolute;
+    left: 16%;
+    top: 35%;
+    /* border: solid 1px black; */
+}
+
+#homepageinfo h1 {
+    color: rgb(255, 255, 255);
+    font-size: 100px;
+    margin: -20px auto;
+    letter-spacing: -2px;
+    word-spacing: 2px;
+}
+
+#homepageinfo p {
+    font-weight: 250;
+    font-size: 14px;
+    margin-left: 8px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 2px black;
+}
+
+#homepageinfo a {
+    text-decoration: none;
+    color: white;
+}
+
+.section_projects {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)), url("/img/projectbackground.jpg") no-repeat;
+    background-size: cover;
+    background-position: 25% 55%;
+    padding: 0;
+    margin: 0;
+
+
+    max-width: 100%;
+    /* border: 1px solid black; */
+}
+
+.section_projects h2 {
+    text-align: center;
+    color: black;
+    font-size: 60px;
+    margin: 0 auto;
+    padding-top: 60px;
+    box-sizing: border-box;
+    /* position: absolute;
+    left: 16%;
+    top: 20%; */
+    /* border: solid 1px black; */
+}
+
+.projects {
+    display: flex;
+    gap: 20px;
+    /* Khoảng cách giữa các project_item */
+    justify-content: center;
+    /* Căn giữa các item theo chiều ngang */
+    margin-top: 20px;
+}
+
+.project_item {
+    width: 25vw;
+    height: 50vh;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    /* position: absolute;
+    left: 16%;
+    top: 20%; */
+    border: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    filter: grayscale(100%);
+}
+
+.project_item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project_item a,
+.project_item p {
+    color: rgb(255, 255, 255);
+    margin-top: auto;
+    display: inline-block;
+    padding: 20px;
+}
+
+#project_item1 {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url("/img/project_item1.webp"), no-repeat;
+    background-size: cover;
+    background-position: 65% 45%;
+}
+
+#project_item2 {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url("https://cdn2.fptshop.com.vn/unsafe/Uploads/images/tin-tuc/168169/Originals/honeypot-1.jpg"), no-repeat;
+    background-size: cover;
+    background-position: 50% 45%;
+}
+
+#project_item3 {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url("https://www.fusionmanageit.co.uk/wp-content/uploads/2023/05/what-is-a-firewall-featured-image.jpg"), no-repeat;
+    background-size: cover;
+    background-position: 50% 40%;
+}
+
+.section_skills {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0)), url("/img/skillbackground.png") no-repeat;
+    background-size: cover;
+    background-position: 40% 55%;
+    padding: 0;
+    margin: 0;
+    /* max-width: 100%; */
+    filter: grayscale(100%);
+    text-shadow: 1px 1px 20px black;
+
+    /* border: 1px solid black; */
+}
+
+.section_skills h2 {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    font-size: 60px;
+    margin: 0 auto;
+    padding-top: 60px;
+    box-sizing: border-box;
+    /* position: absolute;
+    left: 16%;
+    top: 20%; */
+    /* border: solid 1px black; */
+}
+#skills {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+.skills_item {
+    text-align: center;
+    color: rgb(255, 255, 255);
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.0));
+    /* position: absolute;
+    left: 16%;
+    top: 20%; */
+    width: 20vw;
+    height: 60vh;
+    /* border: solid 1px black; */
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+    gap: 20px;
+    /* Khoảng cách giữa các project_item */
+    /* Căn giữa các item theo chiều ngang */
+    margin-top: 20px;
+}
+.skills_item:hover {
+    transform: scale(1.05);
+}
+.skills_item h3 {
+    /* background-color: white;
+    color: black; */
+}.skills_item ul {
+    padding-left: 20px;
+    list-style-type: none;
+}
+.skills_item ul li {
+    margin-bottom: 20px;
+}

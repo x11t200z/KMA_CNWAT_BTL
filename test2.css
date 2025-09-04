@@ -1,0 +1,30 @@
+body {
+    border: 1px solid black;
+    padding: 0;
+
+}
+ul{
+    border: 1px solid black;
+    /* margin-left: 20px; */
+    display: flex;
+    gap: 10px;
+}
+li {
+    border: 1px solid black;
+}
+a {
+    text-decoration: none;
+}
+p {
+    border: 1px solid black;
+    overflow-wrap: ;
+}
+pre{
+    padding: 2000px;
+
+}
+img{
+    position: fixed;
+    bottom: 30px;
+    left: 50px;
+}

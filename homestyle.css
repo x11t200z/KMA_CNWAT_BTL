@@ -1,0 +1,155 @@
+body {
+  font-family: Arial, sans-serif;
+}
+/* #left,
+#center,
+#right {
+  display: inline;
+  float: left;
+} */
+
+.clear {
+  clear: both;
+}
+
+#top {
+  display: flex;
+  /* Cho phép các div con hiển thị cùng hàng */
+  gap: 5px;
+  /* Khoảng cách giữa các div */
+  height:  25vh;
+  /* Chiều cao của container */
+  /* border: solid 1px black; */
+  /* Viền của container */
+  margin-bottom: 5px;
+  /* Khoảng cách dưới */
+}
+
+#banner {
+  width: 100%;
+  text-align: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Căn giữa theo chiều dọc */
+  align-items: center;     /* Căn giữa theo chiều ngang */
+  height: 100%;     
+  /* background-color: bisque; */
+  }
+#banner img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto; 
+  width: 85vw;
+  display: block;
+  object-fit: cover;
+  border-radius: 8px;
+}
+#banner h2 {
+  color: #000;
+  font-size: 24px;
+  margin: 0;
+  padding: 10px 0;
+}
+#thongtinsv {
+  width: 15vw;
+  text-align: center;
+  font-size: small;
+  /* border: 1px solid black; */
+}
+#thongtinsv img {
+  max-width: 100%;
+  max-height: 70%;
+  height: auto;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  margin: 0 auto; /* Căn giữa ảnh */
+  border-radius: 8px;   /* Làm tròn ảnh */
+}
+
+#middle {
+  flex: 1;
+  /* chiếm hết khoảng trống đẩy footer xuống */
+  display: flex;
+  /* giữ layout trái – phải */
+  gap: 5px;
+}
+
+table,
+th,
+td {
+  border: 3px solid black; 
+}
+
+#left {
+  width: 15vw;
+  text-align: left;
+  /* border: 1px solid black; */
+  background-color: #eaeaea;
+  border-radius: 8px;
+}
+
+#left h3 {
+  text-align: top;
+}
+
+
+#left ul {
+  list-style-type: none; /* Bỏ dấu chấm */
+  padding-left: 0;       /* Bỏ khoảng lùi */
+  margin: 0;             /* (tuỳ chọn) bỏ margin mặc định */
+}
+#left ul li {
+  margin: 10px; /* Khoảng cách giữa các mục */
+}
+#center {
+  /* width: 80vw; */
+  width: 100%;
+  height: 100vh;
+  /* border: 1px solid black; */
+}
+
+#center iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  /* Loại bỏ viền của iframe */
+}
+
+.button {
+  width: 100%;
+  display: inline-block;
+  padding: 15px 0 20px 20px;   
+  box-sizing: border-box;
+  color: rgb(0, 0, 0);
+  text-align: left;
+  text-decoration: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+  /* margin-bottom: 10px; */
+  border-radius: 5px;
+  /* border: 1px solid white; */
+}
+
+.button:hover {
+  background-color: #cdcdcd;
+  /* màu nền khi hover */
+}
+/* .menuicon{
+  width: 18px;
+  height: 18px;
+  color: white;
+  vertical-align: middle;
+  margin-right: 10px;
+  margin-bottom: 3px
+} */
+#bottom {
+  width: 100%;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  /* Căn giữa theo chiều dọc */
+  /* border-top: 1px solid black; */
+  /* Viền trên */
+}
