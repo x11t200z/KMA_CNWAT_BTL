@@ -3,291 +3,553 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo - Điều hướng iframe đa cấp</title>
+    <title>Bài tập ví dụ mẫu trong bài giảng</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
             background-color: #f5f5f5;
+            padding: 20px;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 2px solid #000;
         }
         
-        nav {
-            background: #2c3e50;
-            padding: 15px 20px;
-            border-radius: 8px 8px 0 0;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-right: 20px;
-            padding: 10px 15px;
-            background: #34495e;
-            border-radius: 4px;
-            display: inline-block;
-            transition: background 0.3s;
-        }
-        
-        nav a:hover {
-            background: #4a6741;
-        }
-        
-        .iframe-container {
-            padding: 20px;
-            height: 600px;
-        }
-        
-        iframe {
+        .main-layout {
+            display: table;
             width: 100%;
-            height: 100%;
-            border: 2px solid #ddd;
-            border-radius: 4px;
-            background: white;
+            min-height: 600px;
         }
         
-        .example-page {
-            padding: 20px;
-            background: #ecf0f1;
-            min-height: 400px;
+        .sidebar {
+            display: table-cell;
+            width: 200px;
+            background: #f9f9f9;
+            border-right: 2px solid #000;
+            padding: 0;
+            vertical-align: top;
         }
         
-        .example-list {
-            background: white;
-            padding: 20px;
-            border-radius: 4px;
-            margin-top: 20px;
+        .content-area {
+            display: table-cell;
+            padding: 0;
+            vertical-align: top;
+            position: relative;
         }
         
-        .example-list a {
-            display: block;
-            padding: 10px 15px;
-            margin: 5px 0;
-            background: #3498db;
-            color: white;
+        .student-info {
+            background: #e8e8e8;
+            border-bottom: 2px solid #000;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .nav-menu {
+            padding: 15px;
+            border-bottom: 2px solid #000;
+            min-height: 300px;
+        }
+        
+        .nav-menu h4 {
+            margin-bottom: 15px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .nav-item {
+            margin-bottom: 8px;
+        }
+        
+        .nav-item a {
+            color: #000;
             text-decoration: none;
-            border-radius: 4px;
-            transition: background 0.3s;
+            font-size: 13px;
+            display: block;
+            padding: 5px 0;
+            cursor: pointer;
         }
         
-        .example-list a:hover {
-            background: #2980b9;
+        .nav-item a:hover {
+            color: #0066cc;
+            text-decoration: underline;
         }
         
-        .specific-example {
-            background: #e8f5e8;
+        .nav-item.example {
+            margin-left: 20px;
+            font-size: 12px;
+        }
+        
+        .copyright-info {
+            padding: 10px 15px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            background: #f0f0f0;
+        }
+        
+        .banner {
+            background: #e8e8e8;
             padding: 30px;
-            border-left: 5px solid #27ae60;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-bottom: 2px solid #000;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .main-content {
+            padding: 20px;
+            min-height: 400px;
+            background: white;
+        }
+        
+        .exercise-content h2 {
+            color: #000;
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .exercise-content h3 {
+            color: #000;
+            font-size: 14px;
+            margin: 15px 0 10px 0;
+            font-weight: bold;
+        }
+        
+        .exercise-content p {
+            line-height: 1.6;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        
+        .code-block {
+            background: #f5f5f5;
+            border: 1px solid #ccc;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            margin: 15px 0;
+            white-space: pre-wrap;
+        }
+        
+        .demo-area {
+            background: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
         }
         
         .back-link {
             display: inline-block;
             margin-top: 20px;
-            padding: 10px 15px;
-            background: #95a5a6;
-            color: white;
+            padding: 8px 15px;
+            background: #e8e8e8;
+            color: #000;
             text-decoration: none;
-            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-size: 12px;
         }
         
         .back-link:hover {
-            background: #7f8c8d;
+            background: #d0d0d0;
+        }
+        
+        .example-list {
+            margin: 15px 0;
+        }
+        
+        .example-list a {
+            display: block;
+            padding: 8px 12px;
+            margin: 5px 0;
+            background: #f0f0f0;
+            color: #000;
+            text-decoration: none;
+            border: 1px solid #ccc;
+            font-size: 13px;
+        }
+        
+        .example-list a:hover {
+            background: #e0e0e0;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Trang chủ (home.html) -->
-        <div id="home-page">
-            <nav>
-                <h3 style="color: white; margin: 0; display: inline-block; margin-right: 30px;">Trang chủ</h3>
-                <a href="#" onclick="loadIntoIframe('example1')">Example 1</a>
-                <a href="#" onclick="loadIntoIframe('example2')">Example 2</a>
-                <a href="#" onclick="loadIntoIframe('example3')">Example 3</a>
-            </nav>
-            
-            <div class="iframe-container">
-                <iframe name="mainContent" id="mainContent" src="about:blank"></iframe>
-            </div>
-        </div>
-
-        <!-- Nội dung các trang ẩn (sẽ được load vào iframe) -->
-        
-        <!-- Example 1 -->
-        <div id="example1-content" style="display: none;">
-            <div class="example-page">
-                <h2>Example 1</h2>
-                <p>Đây là nội dung của Example 1.</p>
-                <p>Trang này không có liên kết con nào khác.</p>
-            </div>
-        </div>
-
-        <!-- Example 2 -->
-        <div id="example2-content" style="display: none;">
-            <div class="example-page">
-                <h2>Example 2 - Danh sách ví dụ</h2>
-                <p>Chọn một ví dụ cụ thể từ danh sách bên dưới:</p>
+        <div class="main-layout">
+            <!-- Sidebar bên trái -->
+            <div class="sidebar">
+                <div class="student-info">
+                    Thông tin của sinh viên: họ và tên, MSSV, ảnh
+                </div>
                 
-                <div class="example-list">
-                    <a href="#" onclick="parent.loadIntoIframe('specific-example-a')" target="_self">Ví dụ A - Xử lý form</a>
-                    <a href="#" onclick="parent.loadIntoIframe('specific-example-b')" target="_self">Ví dụ B - Animation CSS</a>
-                    <a href="#" onclick="parent.loadIntoIframe('specific-example-c')" target="_self">Ví dụ C - API Integration</a>
-                    <a href="#" onclick="parent.loadIntoIframe('specific-example-d')" target="_self">Ví dụ D - Chart.js</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Example 3 -->
-        <div id="example3-content" style="display: none;">
-            <div class="example-page">
-                <h2>Example 3</h2>
-                <p>Đây là nội dung của Example 3.</p>
-                <div class="example-list">
-                    <a href="#" onclick="parent.loadIntoIframe('specific-example-e')" target="_self">Sub Example E</a>
-                    <a href="#" onclick="parent.loadIntoIframe('specific-example-f')" target="_self">Sub Example F</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Các ví dụ cụ thể -->
-        <div id="specific-example-a-content" style="display: none;">
-            <div class="specific-example">
-                <h2>Ví dụ A - Xử lý form</h2>
-                <p>Đây là nội dung chi tiết về cách xử lý form trong JavaScript.</p>
-                <div style="background: #fff; padding: 20px; margin: 15px 0; border-radius: 4px;">
-                    <h4>Demo Form:</h4>
-                    <input type="text" placeholder="Nhập tên..." style="padding: 10px; margin: 5px; border: 1px solid #ddd; border-radius: 4px;">
-                    <button onclick="alert('Form submitted!')" style="padding: 10px 15px; background: #27ae60; color: white; border: none; border-radius: 4px; cursor: pointer;">Submit</button>
-                </div>
-                <a href="#" onclick="parent.loadIntoIframe('example2')" class="back-link">← Quay lại Example 2</a>
-            </div>
-        </div>
-
-        <div id="specific-example-b-content" style="display: none;">
-            <div class="specific-example">
-                <h2>Ví dụ B - Animation CSS</h2>
-                <p>Ví dụ về animation và transition trong CSS.</p>
-                <div style="background: #fff; padding: 20px; margin: 15px 0; border-radius: 4px;">
-                    <div id="animatedBox" style="width: 100px; height: 100px; background: #e74c3c; margin: 20px auto; transition: all 0.3s; border-radius: 4px; cursor: pointer;" onclick="this.style.transform = this.style.transform ? '' : 'rotate(45deg) scale(1.2)'">
-                        Click me!
+                <div class="nav-menu">
+                    <div class="nav-item">
+                        <a onclick="loadContent('home')">1.1.....</a>
+                    </div>
+                    <div class="nav-item">
+                        <a onclick="loadContent('home')">1.2......</a>
+                    </div>
+                    <div class="nav-item">
+                        <a onclick="loadContent('home')">.......</a>
+                    </div>
+                    <div class="nav-item">
+                        <a onclick="loadContent('example-list')"><strong>2.1. Ví dụ</strong></a>
                     </div>
                 </div>
-                <a href="#" onclick="parent.loadIntoIframe('example2')" class="back-link">← Quay lại Example 2</a>
-            </div>
-        </div>
-
-        <div id="specific-example-c-content" style="display: none;">
-            <div class="specific-example">
-                <h2>Ví dụ C - API Integration</h2>
-                <p>Hướng dẫn tích hợp API và xử lý dữ liệu JSON.</p>
-                <div style="background: #fff; padding: 20px; margin: 15px 0; border-radius: 4px;">
-                    <button onclick="fetchData()" style="padding: 10px 15px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer;">Fetch API Data</button>
-                    <div id="apiResult" style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 4px; min-height: 50px;"></div>
+                
+                <div class="copyright-info">
+                    Thông tin bản quyền
                 </div>
-                <a href="#" onclick="parent.loadIntoIframe('example2')" class="back-link">← Quay lại Example 2</a>
             </div>
-        </div>
-
-        <div id="specific-example-d-content" style="display: none;">
-            <div class="specific-example">
-                <h2>Ví dụ D - Chart.js</h2>
-                <p>Demo về việc tạo biểu đồ với Chart.js.</p>
-                <div style="background: #fff; padding: 20px; margin: 15px 0; border-radius: 4px; text-align: center;">
-                    <div style="width: 200px; height: 200px; background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24); margin: 0 auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">
-                        Chart Demo
-                    </div>
+            
+            <!-- Nội dung chính bên phải -->
+            <div class="content-area">
+                <div class="banner">
+                    Banner tùy chọn
                 </div>
-                <a href="#" onclick="parent.loadIntoIframe('example2')" class="back-link">← Quay lại Example 2</a>
-            </div>
-        </div>
-
-        <div id="specific-example-e-content" style="display: none;">
-            <div class="specific-example">
-                <h2>Sub Example E</h2>
-                <p>Nội dung của Sub Example E từ Example 3.</p>
-                <a href="#" onclick="parent.loadIntoIframe('example3')" class="back-link">← Quay lại Example 3</a>
-            </div>
-        </div>
-
-        <div id="specific-example-f-content" style="display: none;">
-            <div class="specific-example">
-                <h2>Sub Example F</h2>
-                <p>Nội dung của Sub Example F từ Example 3.</p>
-                <a href="#" onclick="parent.loadIntoIframe('example3')" class="back-link">← Quay lại Example 3</a>
+                
+                <div class="main-content" id="main-content">
+                    <!-- Nội dung sẽ được load vào đây -->
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Hàm chính để load nội dung vào iframe
-        function loadIntoIframe(contentId) {
-            const iframe = document.getElementById('mainContent');
-            const content = document.getElementById(contentId + '-content');
+        function loadContent(contentType) {
+            const mainContent = document.getElementById('main-content');
             
-            if (content) {
-                // Tạo một blob URL với nội dung HTML
-                const htmlContent = `
-                    <!DOCTYPE html>
-                    <html lang="vi">
-                    <head>
-                        <meta charset="UTF-8">
-                        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                        <title>${contentId}</title>
-                        <style>
-                            body { margin: 0; font-family: Arial, sans-serif; }
-                            .example-page { padding: 20px; background: #ecf0f1; min-height: 400px; }
-                            .example-list { background: white; padding: 20px; border-radius: 4px; margin-top: 20px; }
-                            .example-list a { display: block; padding: 10px 15px; margin: 5px 0; background: #3498db; color: white; text-decoration: none; border-radius: 4px; transition: background 0.3s; }
-                            .example-list a:hover { background: #2980b9; }
-                            .specific-example { background: #e8f5e8; padding: 30px; border-left: 5px solid #27ae60; }
-                            .back-link { display: inline-block; margin-top: 20px; padding: 10px 15px; background: #95a5a6; color: white; text-decoration: none; border-radius: 4px; }
-                            .back-link:hover { background: #7f8c8d; }
-                        </style>
-                    </head>
-                    <body>
-                        ${content.innerHTML}
-                        <script>
-                            function fetchData() {
-                                const result = document.getElementById('apiResult');
-                                if (result) {
-                                    result.innerHTML = 'Loading...';
-                                    setTimeout(() => {
-                                        result.innerHTML = JSON.stringify({
-                                            status: 'success',
-                                            data: 'Sample API response',
-                                            timestamp: new Date().toISOString()
-                                        }, null, 2);
-                                    }, 1000);
-                                }
-                            }
-                        </script>
-                    </body>
-                    </html>
-                `;
-                
-                const blob = new Blob([htmlContent], {type: 'text/html'});
-                const url = URL.createObjectURL(blob);
-                iframe.src = url;
-                
-                // Cleanup blob URL sau khi load xong
-                iframe.onload = function() {
-                    setTimeout(() => URL.revokeObjectURL(url), 1000);
-                };
+            switch(contentType) {
+                case 'home':
+                    mainContent.innerHTML = `
+                        <div class="exercise-content">
+                            <h2>7.1. Bài tập ví dụ mẫu trong bài giảng (các link tham chiếu)</h2>
+                            <h3>(Các link đến các ví dụ cụ thể)</h3>
+                            <div class="example-list">
+                                <a onclick="loadContent('example-bien')">1. Sử dụng biến</a>
+                                <a onclick="loadContent('example-textbox')">2. Sử dụng Textbox và Chương trình con</a>
+                                <a onclick="loadContent('example-other')">3....</a>
+                            </div>
+                            <p style="margin-top: 30px;">Trong đó 1. Sử dụng biến là link đến trang sử dụng biến như sau:</p>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'example-list':
+                    mainContent.innerHTML = `
+                        <div class="exercise-content">
+                            <h2>2.1. Ví dụ - Danh sách các bài tập</h2>
+                            <div class="example-list">
+                                <a onclick="loadContent('example-bien')">1. Sử dụng biến</a>
+                                <a onclick="loadContent('example-textbox')">2. Sử dụng Textbox và Chương trình con</a>
+                                <a onclick="loadContent('example-loop')">3. Vòng lặp và điều kiện</a>
+                                <a onclick="loadContent('example-array')">4. Mảng và xử lý dữ liệu</a>
+                                <a onclick="loadContent('example-function')">5. Hàm và tham số</a>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'example-bien':
+                    mainContent.innerHTML = `
+                        <div class="exercise-content">
+                            <h2>LAM 05TH1A</h2>
+                            <h3>1. Sử dụng biến</h3>
+                            
+                            <p><strong>Mục tiêu:</strong> Học cách khai báo và sử dụng biến trong JavaScript.</p>
+                            
+                            <h3>Ví dụ code:</h3>
+                            <div class="code-block">// Khai báo biến
+var ten = "Nguyễn Văn A";
+var tuoi = 20;
+var diem = 8.5;
+
+// Hiển thị thông tin
+console.log("Tên: " + ten);
+console.log("Tuổi: " + tuoi);
+console.log("Điểm: " + diem);</div>
+                            
+                            <h3>Demo thực hành:</h3>
+                            <div class="demo-area">
+                                <p>Nhập thông tin:</p>
+                                <input type="text" id="inputName" placeholder="Nhập tên" style="margin: 5px; padding: 5px;">
+                                <input type="number" id="inputAge" placeholder="Nhập tuổi" style="margin: 5px; padding: 5px;">
+                                <br><br>
+                                <button onclick="showInfo()" style="padding: 8px 15px; background: #4CAF50; color: white; border: none; cursor: pointer;">Hiển thị thông tin</button>
+                                <div id="result" style="margin-top: 15px; padding: 10px; background: #f0f0f0; min-height: 50px;"></div>
+                            </div>
+                            
+                            <a onclick="loadContent('example-list')" class="back-link">← Quay lại danh sách ví dụ</a>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'example-textbox':
+                    mainContent.innerHTML = `
+                        <div class="exercise-content">
+                            <h2>2. Sử dụng Textbox và Chương trình con</h2>
+                            
+                            <p><strong>Mục tiêu:</strong> Học cách tương tác với textbox và tạo chương trình con.</p>
+                            
+                            <h3>Ví dụ code:</h3>
+                            <div class="code-block">function tinhTong(a, b) {
+    return parseFloat(a) + parseFloat(b);
+}
+
+function tinhHieu(a, b) {
+    return parseFloat(a) - parseFloat(b);
+}
+
+function xuLyPhepToan() {
+    var so1 = document.getElementById("so1").value;
+    var so2 = document.getElementById("so2").value;
+    
+    var tong = tinhTong(so1, so2);
+    var hieu = tinhHieu(so1, so2);
+    
+    document.getElementById("ketqua").innerHTML = 
+        "Tổng: " + tong + "<br>Hiệu: " + hieu;
+}</div>
+                            
+                            <h3>Demo thực hành:</h3>
+                            <div class="demo-area">
+                                <p>Máy tính đơn giản:</p>
+                                <input type="number" id="so1" placeholder="Số thứ nhất" style="margin: 5px; padding: 5px;">
+                                <input type="number" id="so2" placeholder="Số thứ hai" style="margin: 5px; padding: 5px;">
+                                <br><br>
+                                <button onclick="tinhToan()" style="padding: 8px 15px; background: #2196F3; color: white; border: none; cursor: pointer; margin: 2px;">Tính toán</button>
+                                <div id="ketqua" style="margin-top: 15px; padding: 10px; background: #f0f0f0; min-height: 50px;"></div>
+                            </div>
+                            
+                            <a onclick="loadContent('example-list')" class="back-link">← Quay lại danh sách ví dụ</a>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'example-loop':
+                    mainContent.innerHTML = `
+                        <div class="exercise-content">
+                            <h2>3. Vòng lặp và điều kiện</h2>
+                            
+                            <p><strong>Mục tiêu:</strong> Học cách sử dụng vòng lặp for, while và câu lệnh điều kiện if-else.</p>
+                            
+                            <h3>Ví dụ code:</h3>
+                            <div class="code-block">// Vòng lặp for
+for (var i = 1; i <= 10; i++) {
+    console.log("Số: " + i);
+}
+
+// Điều kiện if-else
+function kiemTraTuoi(tuoi) {
+    if (tuoi >= 18) {
+        return "Đã trưởng thành";
+    } else {
+        return "Chưa trưởng thành";
+    }
+}</div>
+                            
+                            <h3>Demo thực hành:</h3>
+                            <div class="demo-area">
+                                <p>Tạo bảng cửu chương:</p>
+                                <input type="number" id="bangCuuChuong" min="1" max="10" placeholder="Nhập số (1-10)" style="margin: 5px; padding: 5px;">
+                                <button onclick="taoBangCuuChuong()" style="padding: 8px 15px; background: #FF9800; color: white; border: none; cursor: pointer;">Tạo bảng</button>
+                                <div id="bangKetQua" style="margin-top: 15px; padding: 10px; background: #f0f0f0; min-height: 50px; font-family: monospace;"></div>
+                            </div>
+                            
+                            <a onclick="loadContent('example-list')" class="back-link">← Quay lại danh sách ví dụ</a>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'example-array':
+                    mainContent.innerHTML = `
+                        <div class="exercise-content">
+                            <h2>4. Mảng và xử lý dữ liệu</h2>
+                            
+                            <p><strong>Mục tiêu:</strong> Học cách tạo, truy cập và xử lý mảng.</p>
+                            
+                            <h3>Ví dụ code:</h3>
+                            <div class="code-block">// Tạo mảng
+var danhSachHocSinh = ["An", "Bình", "Cường", "Dung"];
+var diem = [8.5, 7.2, 9.1, 6.8];
+
+// Duyệt mảng
+for (var i = 0; i < danhSachHocSinh.length; i++) {
+    console.log(danhSachHocSinh[i] + ": " + diem[i]);
+}
+
+// Tính điểm trung bình
+function tinhDiemTB(mangDiem) {
+    var tong = 0;
+    for (var i = 0; i < mangDiem.length; i++) {
+        tong += mangDiem[i];
+    }
+    return tong / mangDiem.length;
+}</div>
+                            
+                            <h3>Demo thực hành:</h3>
+                            <div class="demo-area">
+                                <p>Quản lý danh sách học sinh:</p>
+                                <input type="text" id="tenHS" placeholder="Nhập tên học sinh" style="margin: 5px; padding: 5px;">
+                                <input type="number" id="diemHS" step="0.1" min="0" max="10" placeholder="Điểm" style="margin: 5px; padding: 5px;">
+                                <button onclick="themHocSinh()" style="padding: 8px 15px; background: #9C27B0; color: white; border: none; cursor: pointer;">Thêm</button>
+                                <button onclick="tinhDiemTrungBinh()" style="padding: 8px 15px; background: #607D8B; color: white; border: none; cursor: pointer;">Tính ĐTB</button>
+                                <div id="danhSachHS" style="margin-top: 15px; padding: 10px; background: #f0f0f0; min-height: 50px;"></div>
+                            </div>
+                            
+                            <a onclick="loadContent('example-list')" class="back-link">← Quay lại danh sách ví dụ</a>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'example-function':
+                    mainContent.innerHTML = `
+                        <div class="exercise-content">
+                            <h2>5. Hàm và tham số</h2>
+                            
+                            <p><strong>Mục tiêu:</strong> Học cách tạo và sử dụng hàm với các tham số khác nhau.</p>
+                            
+                            <h3>Ví dụ code:</h3>
+                            <div class="code-block">// Hàm có tham số
+function chaoHoi(ten, tuoi) {
+    return "Xin chào " + ten + ", bạn " + tuoi + " tuổi!";
+}
+
+// Hàm có giá trị trả về
+function tinhDienTichHinhChuNhat(dai, rong) {
+    return dai * rong;
+}
+
+// Hàm với tham số mặc định
+function tinhLuong(luongCoBan, heSo = 1.0) {
+    return luongCoBan * heSo;
+}</div>
+                            
+                            <h3>Demo thực hành:</h3>
+                            <div class="demo-area">
+                                <p>Tính toán hình học:</p>
+                                <select id="loaiHinh" style="margin: 5px; padding: 5px;">
+                                    <option value="vuong">Hình vuông</option>
+                                    <option value="chunhat">Hình chữ nhật</option>
+                                    <option value="tron">Hình tròn</option>
+                                </select><br>
+                                <input type="number" id="thamSo1" placeholder="Tham số 1" style="margin: 5px; padding: 5px;">
+                                <input type="number" id="thamSo2" placeholder="Tham số 2 (nếu cần)" style="margin: 5px; padding: 5px;">
+                                <br><br>
+                                <button onclick="tinhDienTich()" style="padding: 8px 15px; background: #795548; color: white; border: none; cursor: pointer;">Tính diện tích</button>
+                                <div id="ketQuaDienTich" style="margin-top: 15px; padding: 10px; background: #f0f0f0; min-height: 50px;"></div>
+                            </div>
+                            
+                            <a onclick="loadContent('example-list')" class="back-link">← Quay lại danh sách ví dụ</a>
+                        </div>
+                    `;
+                    break;
+                    
+                default:
+                    mainContent.innerHTML = `
+                        <div class="exercise-content">
+                            <h2>7.1. Bài tập ví dụ mẫu trong bài giảng</h2>
+                            <p>Chào mừng bạn đến với hệ thống bài tập lập trình.</p>
+                            <p>Hãy chọn một mục từ menu bên trái để bắt đầu học tập.</p>
+                        </div>
+                    `;
             }
         }
-
-        // Load trang mặc định
-        window.onload = function() {
-            loadIntoIframe('example2');
-        };
+        
+        // Các hàm demo
+        function showInfo() {
+            var name = document.getElementById('inputName').value || "Chưa nhập tên";
+            var age = document.getElementById('inputAge').value || "Chưa nhập tuổi";
+            document.getElementById('result').innerHTML = 
+                "<strong>Thông tin đã nhập:</strong><br>Tên: " + name + "<br>Tuổi: " + age;
+        }
+        
+        function tinhToan() {
+            var so1 = parseFloat(document.getElementById('so1').value) || 0;
+            var so2 = parseFloat(document.getElementById('so2').value) || 0;
+            document.getElementById('ketqua').innerHTML = 
+                "<strong>Kết quả:</strong><br>Tổng: " + (so1 + so2) + "<br>Hiệu: " + (so1 - so2) + "<br>Tích: " + (so1 * so2);
+        }
+        
+        function taoBangCuuChuong() {
+            var so = parseInt(document.getElementById('bangCuuChuong').value) || 1;
+            var ketqua = "<strong>Bảng cửu chương " + so + ":</strong><br>";
+            for (var i = 1; i <= 10; i++) {
+                ketqua += so + " x " + i + " = " + (so * i) + "<br>";
+            }
+            document.getElementById('bangKetQua').innerHTML = ketqua;
+        }
+        
+        var danhSach = [];
+        function themHocSinh() {
+            var ten = document.getElementById('tenHS').value;
+            var diem = parseFloat(document.getElementById('diemHS').value);
+            if (ten && !isNaN(diem)) {
+                danhSach.push({ten: ten, diem: diem});
+                hienThiDanhSach();
+                document.getElementById('tenHS').value = '';
+                document.getElementById('diemHS').value = '';
+            }
+        }
+        
+        function hienThiDanhSach() {
+            var html = "<strong>Danh sách học sinh:</strong><br>";
+            for (var i = 0; i < danhSach.length; i++) {
+                html += (i+1) + ". " + danhSach[i].ten + ": " + danhSach[i].diem + " điểm<br>";
+            }
+            document.getElementById('danhSachHS').innerHTML = html;
+        }
+        
+        function tinhDiemTrungBinh() {
+            if (danhSach.length > 0) {
+                var tong = 0;
+                for (var i = 0; i < danhSach.length; i++) {
+                    tong += danhSach[i].diem;
+                }
+                var dtb = (tong / danhSach.length).toFixed(2);
+                document.getElementById('danhSachHS').innerHTML += "<br><strong>Điểm trung bình lớp: " + dtb + "</strong>";
+            }
+        }
+        
+        function tinhDienTich() {
+            var loai = document.getElementById('loaiHinh').value;
+            var ts1 = parseFloat(document.getElementById('thamSo1').value) || 0;
+            var ts2 = parseFloat(document.getElementById('thamSo2').value) || 0;
+            var ketqua = "";
+            
+            switch(loai) {
+                case 'vuong':
+                    ketqua = "Diện tích hình vuông: " + (ts1 * ts1);
+                    break;
+                case 'chunhat':
+                    ketqua = "Diện tích hình chữ nhật: " + (ts1 * ts2);
+                    break;
+                case 'tron':
+                    ketqua = "Diện tích hình tròn: " + (3.14159 * ts1 * ts1).toFixed(2);
+                    break;
+            }
+            document.getElementById('ketQuaDienTich').innerHTML = ketqua;
+        }
+        
+        // Load nội dung mặc định
+        loadContent('home');
     </script>
 </body>
 </html>
