@@ -9,7 +9,11 @@
         mycars[2] = "BMW";
         for (x in mycars) {
             document.write(mycars[x] + "<br/> ");
+            document.write(x + "<br/> ");
         }
+        mycars.forEach(element => {
+            document.write(element + "<br/> "); 
+        });
     </script>
 </body>
 

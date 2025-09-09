@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Trang Trắc Nghiệm</title>
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    .tabs {
+      display: flex;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .tab {
+      padding: 10px;
+      background: #eee;
+      margin-right: 5px;
+      border-radius: 5px;
+    }
+
+    .tab.active {
+      background: #4285f4;
+      color: white;
+    }
+
+    .tab-content {
+      display: none;
+    }
+
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Trang Trắc Nghiệm</h1>
+
+  <!-- Thanh tab -->
+  <div class="tabs">
+    <div class="tab active" data-tab="1">Bài 1</div>
+    <div class="tab" data-tab="2">Bài 2</div>
+    <div class="tab" data-tab="3">Bài 3</div>
+  </div>
+
+  <!-- Nội dung tab -->
+  <div id="tab-1" class="tab-content active">
+    <h2>Bài trắc nghiệm 1</h2>
+    <form id="quiz1">
+      <p>1. HTML là viết tắt của gì?</p>
+      <input type="radio" name="q1" value="a"> HyperText Markup Language<br>
+      <input type="radio" name="q1" value="b"> HighText Markdown Language<br>
+      <input type="radio" name="q1" value="c"> HyperTool Multi Language<br>
+
+      <p>2. CSS dùng để làm gì?</p>
+      <input type="checkbox" name="q2" value="style"> Tạo kiểu dáng<br>
+      <input type="checkbox" name="q2" value="logic"> Xử lý logic<br>
+      <input type="checkbox" name="q2" value="color"> Định nghĩa màu sắc<br>
+
+      <button type="button" onclick="submitQuiz(1)">Nộp bài</button>
+    </form>
+    <div id="result1"></div>
+  </div>
+
+  <div id="tab-2" class="tab-content">
+    <h2>Bài trắc nghiệm 2</h2>
+    <form id="quiz2">
+      <p>1. JavaScript chạy ở đâu?</p>
+      <select name="q1">
+        <option value="browser">Trình duyệt</option>
+        <option value="server">Máy chủ</option>
+        <option value="os">Hệ điều hành</option>
+      </select>
+
+      <button type="button" onclick="submitQuiz(2)">Nộp bài</button>
+    </form>
+    <div id="result2"></div>
+  </div>
+
+  <div id="tab-3" class="tab-content">
+    <h2>Bài trắc nghiệm 3</h2>
+    <form id="quiz3">
+      <p>Nhập năm bạn bắt đầu học lập trình:</p>
+      <input type="number" name="q1">
+
+      <button type="button" onclick="submitQuiz(3)">Nộp bài</button>
+    </form>
+    <div id="result3"></div>
+  </div>
+
+  <script>
+    // Chuyển tab
+    const tabs = document.querySelectorAll('.tab');
+    const contents = document.querySelectorAll('.tab-content');
+
+    tabs.forEach(tab => { // thêm vào các tab hàm xử lý click (việc thêm này được thực hiện bằng vòng lặp)
+      tab.addEventListener('click', () => {
+        // Khi một tab được click
+        // Việc đầu tiên là xóa hết trạng thái active (tức class active) khỏi các element
+        tabs.forEach(t => t.classList.remove('active'));
+        contents.forEach(c => c.classList.remove('active'));
+
+        // Sau đó thêm tab được click vào class active
+        tab.classList.add('active');
+
+        // Tạo trạng thái active cho nội dung tab - điều này sẽ khiến nội dung của tab (là các element tab-content) được hiển thị ra
+        // Có liên quan đến CSS vì khi phần tử được thêm class active vào thì nó sẽ được hiển thị, còn lại mặc định không trong class active thì sẽ bị ẩn
+        document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+
+      });
+    });
+
+    // Hàm xử lý kết quả
+    function submitQuiz(num) {
+      let form = document.getElementById('quiz' + num);
+      let resultDiv = document.getElementById('result' + num);
+      let formData = new FormData(form);
+
+      let output = "<h3>Kết quả bài " + num + "</h3>";
+      for (let [key, value] of formData.entries()) {
+        output += key + ": " + value + "<br>";
+      }
+      resultDiv.innerHTML = output;
+    }
+  </script>
+</body>
+
+</html>

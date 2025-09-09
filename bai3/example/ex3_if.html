@@ -1,26 +1,26 @@
 <html>
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
-    <title>Câu 1.4</title>
-    <script language=javascript>
+    <meta charset="UTF-8">
+    <title>If</title>
+    <script>
         function chay() {
-            var a;
-            a = window.document.bai1.T1.value * 1;
+            let a;
+            a = document.forms['ex_if'].elements['T1'].value * 1;
             if ((a % 2) == 0) {
-                alert(a + " la so chan ");
+                alert(a + " là số chẵn ");
             }
             else {
-                alert(a + " la so le ");
+                alert(a + " là số lẻ ");
             }
         }
     </script>
 </head>
 
 <body>
-    <form name=bai1>
-        <input type=text name=T1>
-        <input type=button name=c value="chay thu" onclick="chay()">
+    <form name=ex_if>
+        <input type=text id=T1>
+        <input type=button name=c value="Run" onclick="chay()">
     </form>
 </body>
 
