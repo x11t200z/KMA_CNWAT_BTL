@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Form nhập LOP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      max-width: 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <h2>Nhập thông tin Lớp</h2>
+  <form id="lopForm" onsubmit="return validateForm()">
+    <label for="MaLop">Mã lớp (tối đa 6 ký tự)</label>
+    <input type="text" id="MaLop" name="MaLop" placeholder="VD: AT19">
+    <div class="error" id="errMaLop"></div>
+
+    <label for="TenLop">Tên lớp</label>
+    <input type="text" id="TenLop" name="TenLop" placeholder="VD: AT19D">
+    <div class="error" id="errTenLop"></div>
+
+    <label for="KhoaHoc">Khóa học</label>
+    <input type="number" id="KhoaHoc" name="KhoaHoc" placeholder="VD: 19">
+    <div class="error" id="errKhoaHoc"></div>
+
+    <label for="GVCN">Giáo viên chủ nhiệm</label>
+    <input type="text" id="GVCN" name="GVCN" placeholder="VD: Vũ Thị Vân">
+    <div class="error" id="errGVCN"></div>
+
+    <button type="submit">Lưu</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      let isValid = true;
+
+      // Lấy giá trị input
+      let maLop = document.getElementById("MaLop").value.trim();
+      let tenLop = document.getElementById("TenLop").value.trim();
+      let khoaHoc = document.getElementById("KhoaHoc").value.trim();
+      let gvcn = document.getElementById("GVCN").value.trim();
+
+      // Reset lỗi
+      document.getElementById("errMaLop").innerText = "";
+      document.getElementById("errTenLop").innerText = "";
+      document.getElementById("errKhoaHoc").innerText = "";
+      document.getElementById("errGVCN").innerText = "";
+
+      // Kiểm tra Mã lớp
+      if (maLop === "") {
+        document.getElementById("errMaLop").innerText = "Mã lớp không được bỏ trống";
+        isValid = false;
+      } else if (!/^[A-Za-z0-9]{1,6}$/.test(maLop)) { // cặp dấu / là để khai báo Regex
+        document.getElementById("errMaLop").innerText = "Mã lớp chỉ chứa chữ/số và tối đa 6 ký tự";
+        isValid = false;
+      }
+
+      // Kiểm tra Tên lớp
+      if (tenLop === "") {
+        document.getElementById("errTenLop").innerText = "Tên lớp không được bỏ trống";
+        isValid = false;
+      } else if (tenLop.length > 50) {
+        document.getElementById("errTenLop").innerText = "Tên lớp tối đa 50 ký tự";
+        isValid = false;
+      }
+
+      // Kiểm tra Khóa học
+      if (khoaHoc === "") {
+        document.getElementById("errKhoaHoc").innerText = "Vui lòng nhập khóa học";
+        isValid = false;
+      } else if (isNaN(khoaHoc) || khoaHoc <= 0) {
+        document.getElementById("errKhoaHoc").innerText = "Khóa học phải là số nguyên dương";
+        isValid = false;
+      }
+
+      // Kiểm tra GVCN
+      if (gvcn === "") {
+        document.getElementById("errGVCN").innerText = "Giáo viên chủ nhiệm không được bỏ trống";
+        isValid = false;
+      } else if (gvcn.length > 50) {
+        document.getElementById("errGVCN").innerText = "Tên GVCN tối đa 50 ký tự";
+        isValid = false;
+      }
+
+      return isValid;
+    }
+  </script>
+</body>
+</html>

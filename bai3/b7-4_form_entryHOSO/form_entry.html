@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Form nhập HOSO</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    form {
+      max-width: 400px;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      box-sizing: border-box;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 15px;
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Nhập thông tin Lớp</h2>
+  <form id="hosoForm" onsubmit="return validateForm()">
+    <label for="MSV">Mã sinh viên (8 ký tự)</label>
+    <input type="text" id="MSV" name="MSV" placeholder="VD: AT190447">
+    <div class="error" id="errMSV"></div>
+
+    <label for="HoTen">Họ và tên</label>
+    <input type="text" id="HoTen" name="HoTen" placeholder="VD: Lưu Đức Thắng">
+    <div class="error" id="errHoTen"></div>
+
+    <label for="NgaySinh">Ngày sinh (tháng/ngày/năm)</label>
+    <input type="date" id="NgaySinh" name="NgaySinh" placeholder="">
+    <div class="error" id="errNgaySinh"></div>
+
+    <label for="DiaChi">Địa chỉ</label>
+    <input type="text" name="DiaChi" id="DiaChi" placeholder="VD: xã Chất Bình, tỉnh Ninh Bình">
+    <div class="error" id="errDiaChi"></div>
+
+    <label for="Lop">Lớp</label>
+    <input type="text" name="Lop" id="Lop" placeholder="VD: AT19D">
+    <div class="error" id="errLop"></div>
+
+    <label for="DiemToan">Điểm Toán</label>
+    <input type="float" name="DiemToan" id="DiemToan">
+    <div class="error" id="errDiemToan"></div>
+
+
+
+    <button type="submit">Lưu</button>
+  </form>
+
+  <script>
+    function validateForm() {
+      let isValid = true;
+
+      // Lấy các giá trị input
+      let msv = document.getElementById("MSV").value.trim();
+      let hoTen = document.getElementById("HoTen").value.trim();
+      let ngaySinh = document.getElementById("NgaySinh").value;
+      let diaChi = document.getElementById("DiaChi").value.trim();
+      let lop = document.getElementById("Lop").value.trim();
+      let diemToan = document.getElementById("DiemToan").value;
+
+      // Reset lại các thông báo lỗi
+      document.getElementById("errMSV").innerText = "";
+      document.getElementById("errHoTen").innerText = "";
+      document.getElementById("errNgaySinh").innerText = "";
+      document.getElementById("errDiaChi").innerText = "";
+      document.getElementById("errLop").innerHTML = "";
+      document.getElementById("errDiemToan").innerHTML = "";
+
+      //Sau khi đã reset, trường nào không thỏa mãn các điều kiện kiểm tra bên dưới mới xuất hiện thông báo lỗi
+
+      // Kiểm tra Mã sinh viên
+      if (msv === "") {
+        document.getElementById("errMSV").innerText = "Vui lòng nhập mã sinh viên";
+        isValid = false;
+      } else if (!/^[A-Za-z0-9]{1,8}$/.test(msv)) { // cặp dấu / là để khai báo Regex
+        document.getElementById("errMSV").innerText = "Mã sinh viên chỉ chứa chữ/số và tối đa 8 ký tự";
+        isValid = false;
+      }
+
+      //Kiểm tra họ và tên
+      if (hoTen === "") {
+        document.getElementById("errHoTen").innerHTML = "Vui lòng nhập họ và tên";
+        isValid = false;
+      } else if (!/^[A-Za-z\s]{1,50}$/.test(hoTen)) {
+        document.getElementById("errHoTen").innerHTML = "Họ tên chỉ chứa chữ cái và dấu cách, không vượt quá 50 ký tự"
+        isValid = false;
+      }
+
+      //Kiểm tra ngày sinh
+      let today = new Date(); // Tạo đối tượng lưu trữ ngày hôm nay để thực hiện điều kiện so sánh với ngày sinh
+      let tmp = new Date(ngaySinh); // Tạo biến tạm này để lưu trữ phần tử ngày sinh, ta cần đó là phần tử để có thể so sánh với phần tử today, nếu để nguyên là chuỗi như ngaySinh thì sẽ không so sánh được
+
+      if (tmp > today) {
+        document.getElementById("errNgaySinh").innerHTML = "Ngày sinh phải trước thời điểm hiện tại";
+        isValid = false;
+      } else if (!ngaySinh) {
+        document.getElementById("errNgaySinh").innerHTML = "Vui lòng nhập ngày sinh";
+        isValid = false;
+      }
+
+      //Kiểm tra địa chỉ
+      if (diaChi === "") {
+        document.getElementById("errDiaChi").innerHTML = "Vui lòng nhập địa chỉ";
+        isValid = false;
+      } else if (diaChi.length > 150) {
+        document.getElementById("errDiaChi").innerHTML = "Địa chỉ không vượt quá 150 ký tự"
+        isValid = false;
+      }
+
+      // Kiểm tra Lớp
+      if (lop === "") {
+        document.getElementById("errLop").innerHTML = "Vui lòng nhập vào lớp";
+        isValid = false;
+      }
+
+      //Kiểm tra điểm
+      if (!diemToan) {
+        document.getElementById("errDiemToan").innerHTML = "Vui lòng nhập điểm Toán";
+        isValid = false;
+      }
+      else if (diemToan < 0 || diemToan > 10) {
+        document.getElementById("errDiemToan").innerHTML = "Điểm toán không hợp lệ";
+        isValid = false;
+      }
+      return isValid;
+    }
+  </script>
+</body>
+
+</html>

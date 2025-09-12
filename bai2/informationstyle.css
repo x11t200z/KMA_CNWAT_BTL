@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap'); */
 
 .lexend-text {
     font-family: "Lexend", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
-    /* có thể đổi thành 700, 300 tùy bạn đã import */
+    /* có thể đổi thành 700, 300 tùy theo import */
     font-style: normal;
 }
 .material-icons {
@@ -53,7 +53,7 @@ section {
 }
 
 .section_about {
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url("/img/inforhomepagebanner.jpg") no-repeat;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), url("inforhomepagebanner.jpg") no-repeat;
     background-size: cover;
     background-position: 25% 55%;
     padding: 0;
@@ -92,7 +92,7 @@ section {
 }
 
 .section_projects {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)), url("/img/projectbackground.jpg") no-repeat;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0)), url('projectbackground.jpg') no-repeat;
     background-size: cover;
     background-position: 25% 55%;
     padding: 0;
@@ -156,7 +156,7 @@ section {
 }
 
 #project_item1 {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url("/img/project_item1.webp"), no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url('./project_item1.webp'), no-repeat;
     background-size: cover;
     background-position: 65% 45%;
 }
@@ -174,7 +174,7 @@ section {
 }
 
 .section_skills {
-    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0)), url("/img/skillbackground.png") no-repeat;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(255, 255, 255, 0)), url("/luuducthang/bai2/skillbackground.png") no-repeat;
     background-size: cover;
     background-position: 40% 55%;
     padding: 0;

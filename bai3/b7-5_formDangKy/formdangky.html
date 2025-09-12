@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* label {
+            display: block;
+            margin-left: 10px;
+        } */
+        .lbipgroup {
+            display: grid;
+            grid-template-columns: 120px 300px 1fr;
+            /* Cột 1: label cố định, Cột 2: input, Cột 3: thông báo lỗi*/
+            margin-bottom: 10px;
+            align-items: center;
+        }
+
+        .lbipgroup label {
+            text-align: left;
+        }
+
+        .lbipgroup input,
+        .lbipgroup select {
+            padding: 5px;
+
+        }
+
+        input:focus {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="formdangki" action="">
+        <div class="lbipgroup">
+            <label for="HoTen">Họ tên:</label>
+            <input type="text" name="HoTen" id="HoTen" autofocus>
+            <div class="error" id="errHoTen"></div>
+
+        </div>
+        <div class="lbipgroup">
+            <label for="DiaChi">Địa chỉ:</label>
+            <input type="text" name="DiaChi" id="DiaChi">
+            <div class="error" id="errDiaChi"></div>
+        </div>
+        <div class="lbipgroup">
+            <label for="GioiTinh">Giới tính:</label>
+            <div>
+                <input type="radio" name="GioiTinh" id="GioiTinh" value="nam"> Nam
+                <input type="radio" name="GioiTinh" id="GioiTinh" value="nam"> Nữ
+            </div>
+        </div>
+        <div class="lbipgroup">
+            <label for="NgaySinh">Ngày sinh:</label>
+            <input type="text" name="NgaySinh" id="NgaySinh">
+            <div class="error" id="errNgaySinh"></div>
+
+        </div>
+        <div class="lbipgroup">
+            <label for="Email">Email:</label>
+            <input type="text" name="Email" id="Email">
+            <div class="error" id="errEmail"></div>
+
+        </div>
+        <div class="lbipgroup">
+            <label for="SDT">Điện thoại:</label>
+            <input type="text" name="SDT" id="SDT">
+            <div class="error" id="errSDT"></div>
+        </div>
+        <div class="lbipgroup">
+            <label>Khóa đăng ký:</label>
+            <div>
+                <input type="checkbox" name="KhoaDK1" id="KhoaDK1" value="tienganh"> Tiếng Anh
+                <input type="checkbox" name="KhoaDK2" id="KhoaDK2" value="quantri"> Quản trị
+                <input type="checkbox" name="KhoaDK3" id="KhoaDK3" value="cntt"> CNTT
+            </div>
+            <div class="error" id="errKhoaDK"></div>
+
+        </div>
+        <div class="lbipgroup">
+            <label for="username">Tên sử dụng:</label>
+            <input type="text" name="username" id="username">
+            <div class="error" id="errusername"></div>
+        </div>
+        <div class="lbipgroup">
+            <label for="password">Mật khẩu:</label>
+            <input type="password" name="password" id="password">
+            <div class="error" id="errpassword"></div>
+        </div>
+        <div class="lbipgroup">
+            <label for="password2">Gõ lại mật khẩu:</label>
+            <input type="password2" name="password2" id="password2">
+            <div class="error" id="errpassword2"></div>
+        </div>
+        <div class="lbipgroup">
+        </div>
+        <div class="lbipgroup">
+            <label for="Note">Ghi chú</label>
+            <input type="text" name="Note" id="Note">
+            <div class="error" id="errNote"></div>
+        </div>
+
+
+    </form>
+    <script>
+        const inputs = document.querySelectorAll("#formdangki input");
+
+        inputs.forEach()
+    </script>
+</body>
+
+</html>
