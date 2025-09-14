@@ -29,6 +29,11 @@
         input:focus {
             background-color: aqua;
         }
+
+        .error {
+            margin-left: 10px;
+            color: red;
+        }
     </style>
 </head>
 
@@ -46,10 +51,10 @@
             <div class="error" id="errDiaChi"></div>
         </div>
         <div class="lbipgroup">
-            <label for="GioiTinh">Giới tính:</label>
+            <label for="GioiTinh1">Giới tính:</label>
             <div>
-                <input type="radio" name="GioiTinh" id="GioiTinh" value="nam"> Nam
-                <input type="radio" name="GioiTinh" id="GioiTinh" value="nam"> Nữ
+                <input type="radio" name="GioiTinh1" id="GioiTinh1" value="nam"> Nam
+                <input type="radio" name="GioiTinh2" id="GioiTinh2" value="nu"> Nữ
             </div>
         </div>
         <div class="lbipgroup">
@@ -91,7 +96,7 @@
         </div>
         <div class="lbipgroup">
             <label for="password2">Gõ lại mật khẩu:</label>
-            <input type="password2" name="password2" id="password2">
+            <input type="password" name="password2" id="password2">
             <div class="error" id="errpassword2"></div>
         </div>
         <div class="lbipgroup">
@@ -101,13 +106,105 @@
             <input type="text" name="Note" id="Note">
             <div class="error" id="errNote"></div>
         </div>
+        <div class="lbipgroup">
+            <div>
+            </div>
+            <div>
+                <button id="submitBtn">Chấp nhận</button>
+                <button id="boquaBtn" onclick="boqua()">Bỏ qua</button>
+            </div>
+
+        </div>
+
 
 
     </form>
     <script>
+        // Lấy tất cả các input trong form
         const inputs = document.querySelectorAll("#formdangki input");
+        inputs.forEach((input, index) => {
+            input.addEventListener("keydown", function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault(); // chặn form submit
 
-        inputs.forEach()
+                    // Tìm ô tiếp theo
+                    const nextInput = inputs[index + 1];
+                    if (nextInput) {
+                        nextInput.focus(); // chuyển focus sang ô tiếp theo
+                    }
+                }
+            });
+        });
+        // Chuẩn hóa họ tên
+        document.getElementById("HoTen").addEventListener("blur", function () {
+            let value = this.value.trim();                // bỏ khoảng trắng đầu/cuối
+            value = value.replace(/\s+/g, " ");           // bỏ khoảng trắng thừa giữa các từ
+            value = value.split(" ").map(word =>          // viết hoa chữ cái đầu
+                word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            ).join(" ");
+            this.value = value;
+        });
+
+        //CHuẩn hóa email
+        document.getElementById("Email").addEventListener("blur", function () {
+            let value = this.value.trim();
+            let regex = /^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*$/;
+
+            let err = document.getElementById("errEmail");
+            if (!regex.test(value)) {
+                err.innerText = "Email không đúng định dạng";
+            } else {
+                err.innerText = "";
+            }
+        });
+        // Chuẩn hóa ngày sinh
+        document.getElementById("NgaySinh").addEventListener("input", function (e) {
+            let value = this.value.replace(/\D/g, ""); // chỉ giữ số
+            if (value.length >= 2 && value.length < 4) {
+                value = value.slice(0, 2) + "/" + value.slice(2);
+            } else if (value.length >= 4) {
+                value = value.slice(0, 2) + "/" + value.slice(2, 4) + "/" + value.slice(4, 8);
+            }
+            this.value = value;
+        });
+        // Kiểm tra mật khẩu nhập lại
+        document.getElementById("password2").addEventListener("blur", function () {
+            let pass = document.getElementById("password").value;
+            let repass = this.value;
+            let err = document.getElementById("errpassword2");
+
+            if (pass !== repass) {
+                err.innerText = "Mật khẩu gõ lại không đúng";
+            } else {
+                err.innerText = "";
+            }
+        });
+        document.getElementById("submitBtn").addEventListener("click", function (e) {
+            e.preventDefault(); // chặn submit mặc định
+            let isValid = true;
+
+            let requiredFields = ["HoTen", "NgaySinh", "Email", "username", "password", "password2"];
+            requiredFields.forEach(id => {
+                let input = document.getElementById(id);
+                let err = document.getElementById("err" + id);
+                if (!input.value.trim()) {
+                    err.innerText = "Thông tin bắt buộc";
+                    isValid = false;
+                } else {
+                    err.innerText = "";
+                }
+            });
+
+            if (isValid) {
+                console.log("Im here")
+                alert("Form hợp lệ, gửi thành công!");
+                // document.getElementById("myForm").submit();
+            }
+        });
+        function boqua(){
+            document.getElementById("formdangki").reset();
+        }
+
     </script>
 </body>
 

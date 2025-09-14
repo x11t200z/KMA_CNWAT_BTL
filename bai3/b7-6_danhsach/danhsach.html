@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Danh sách nhân sự</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 60%;
+      margin: 20px auto;
+      text-align: left;
+      font-family: Arial, sans-serif;
+    }
+    thead {
+      background-color: rgb(201, 215, 255)
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    /* Hàng chẵn và lẻ */
+    tbody tr:nth-child(odd) {
+      background-color: #f9f9f9;
+    }
+    tbody tr:nth-child(even) {
+      background-color: #e9e9e9;
+    }
+    /* Hover */
+    tbody tr:hover {
+      background-color: #32cd32 !important; /* xanh lá */
+      cursor: pointer;
+    }
+    /* Khi được chọn */
+    .selected {
+      background-color: yellow !important;
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th><input type="checkbox" id="selectAll"></th>
+        <th>Họ tên</th>
+        <th>Chức vụ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input type="checkbox" class="row-check"></td>
+        <td>Lưu Đức Thắng</td>
+        <td>Nhân viên</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="row-check"></td>
+        <td>Bùi Đức Trọng</td>
+        <td>Trưởng phòng</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="row-check"></td>
+        <td>Vũ Mai Anh</td>
+        <td>Giám đốc</td>
+      </tr>
+      <tr>
+        <td><input type="checkbox" class="row-check"></td>
+        <td>Trần Thị Quỳnh Chi</td>
+        <td>Thư ký</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <script>
+    const selectAll = document.getElementById("selectAll");
+    const rowChecks = document.querySelectorAll(".row-check");
+
+    // Chọn/bỏ chọn tất cả khi click ô trên cùng
+    selectAll.addEventListener("change", function () { rowChecks.forEach(check => { check.checked = this.checked; toggleRowHighlight(check); }); });
+
+    // Xử lý khi click từng checkbox
+    rowChecks.forEach(check => {
+      check.addEventListener("change", function () {
+        toggleRowHighlight(this);
+
+        // Kiểm tra nếu tất cả đều được chọn thì checkbox trên cùng cũng chọn
+        const allChecked = [...rowChecks].every(c => c.checked);
+        selectAll.checked = allChecked;
+      });
+
+      // Khi click vào cả dòng
+      check.closest("tr").addEventListener("click", function (e) {
+        console.log(e);
+        if (e.target.tagName !== "INPUT") { // tránh double khi click trực tiếp vào checkbox
+          check.checked = !check.checked;
+          check.dispatchEvent(new Event("change"));
+        }
+      });
+    });
+
+    // Hàm đổi màu khi được chọn
+    function toggleRowHighlight(checkbox) {
+      const row = checkbox.closest("tr");
+      if (checkbox.checked) {
+        row.classList.add("selected");
+      } else {
+        row.classList.remove("selected");
+      }
+    }
+  </script>
+</body>
+</html>
