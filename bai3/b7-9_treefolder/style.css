@@ -1,0 +1,39 @@
+ul, #tree {
+      list-style-type: none;
+    }
+
+    #tree {
+      margin: 0;
+      padding: 0;
+    }
+
+    .folder {
+      cursor: pointer;
+      user-select: none; /* không cho bôi đen chữ */
+    }
+
+    .folder::before {
+      content: "➕"; /* tam giác hướng phải ► */
+      color: black;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .folder-down::before {
+      content: "➖";
+    }
+
+    .nested {
+      display: none;
+      margin-left: 20px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    /* Highlight khi chọn node */
+    li span.selected {
+      background: yellow;
+      border-radius: 3px;
+    }

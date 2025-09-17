@@ -1,2 +1,5 @@
-let name1 = 'Thang'
-document.getElementById('demo').innerHTML = name1;
+document.querySelectorAll("#left .parent > span").forEach(item => {
+  item.addEventListener("click", () => {
+    item.parentElement.classList.toggle("open");
+  });
+});

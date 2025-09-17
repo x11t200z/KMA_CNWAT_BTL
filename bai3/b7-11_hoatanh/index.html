@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hoạt cảnh Stickman</title>
+  <style>
+    #stickman {
+      display: block;
+      margin: 20px auto;
+    }
+    .controls {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 5px 15px;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <button id="jumpBtn">Jump</button>
+    <button id="stopBtn">Stop</button>
+  </div>
+  
+  <!-- Hình nhân vật -->
+  <img id="stickman" src="j1.jpg" alt="stickman">
+
+  <script>
+    const frames = ["j1.jpg", "j2.jpg", "j3.jpg", "j4.jpg"]; 
+    let index = 0;             // vị trí hình hiện tại
+    let step = 1;              // chiều di chuyển (1: tiến, -1: lùi)
+    let intervalId = null;     // ID của setInterval
+
+    const stickman = document.getElementById("stickman");
+    const jumpBtn = document.getElementById("jumpBtn");
+    const stopBtn = document.getElementById("stopBtn");
+
+    // Nhấn Jump
+    jumpBtn.addEventListener("click", () => {
+      if (intervalId) return;  // nếu đang chạy thì không chạy thêm
+      intervalId = setInterval(() => {
+        index += step;
+        if (index === frames.length - 1 || index === 0) {
+          step = -step; // đổi chiều khi chạm đầu/cuối
+        }
+        stickman.src = frames[index];
+      }, 800); // đổi hình mỗi 500ms
+    });
+
+    // Nhấn Stop
+    stopBtn.addEventListener("click", () => {
+      clearInterval(intervalId);
+      intervalId = null;
+    });
+  </script>
+</body>
+</html>

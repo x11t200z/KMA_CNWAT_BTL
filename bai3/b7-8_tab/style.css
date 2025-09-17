@@ -1,0 +1,32 @@
+.tab-container {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    margin-right: 2px;
+    transition: background-color 0.3s;
+}
+
+/* Hover: sáng lên nếu chưa được chọn */
+.tab:hover:not(.active) {
+    background-color: #e0e0e0;
+}
+
+/* Tab được chọn */
+.tab.active {
+    background-color: #00bcd4;
+    color: white;
+    font-weight: bold;
+}
+
+.tab-content {
+    padding: 20px;
+    border: 1px solid #ccc;
+}

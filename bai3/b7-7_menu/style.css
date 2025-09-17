@@ -1,0 +1,24 @@
+.menu li {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #eee;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    list-style-type: none;
+    width: 500px;
+}
+body {
+    display: flex;
+}
+
+/* Hover: sáng lên */
+.menu li:hover {
+    background-color: #d1f0d1;
+}
+
+/* Khi được chọn */
+.menu li.selected {
+    background-color: #4caf50;
+    color: white;
+    font-weight: bold;
+}

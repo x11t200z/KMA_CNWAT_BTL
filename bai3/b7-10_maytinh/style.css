@@ -1,0 +1,67 @@
+/* CSS */
+.calculator { 
+  width: 300px;
+  border: 2px solid #888;
+  padding: 12px;
+  border-radius: 8px;
+  background: #fff;
+}
+
+#display {
+  width: 100%;
+  height: 48px;
+  font-size: 24px;
+  text-align: right;
+  margin-bottom: 12px;
+  padding: 6px 10px;
+  box-sizing: border-box;
+}
+
+/* Grid layout cố định bằng grid-template-areas */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);      /* 4 cột đều nhau */
+  grid-gap: 10px;
+  grid-template-areas:
+    "clear ce div mul"
+    "seven eight nine sub"
+    "four five six add"
+    "one two three eq"
+    "zero zero dot eq";
+}
+
+/* ánh xạ từng nút sang khu vực cụ thể */
+.btn-clear { grid-area: clear; }
+.btn-ce    { grid-area: ce; }
+.btn-div   { grid-area: div; }
+.btn-mul   { grid-area: mul; }
+
+.btn-7     { grid-area: seven; }
+.btn-8     { grid-area: eight; }
+.btn-9     { grid-area: nine; }
+.btn-sub   { grid-area: sub; }
+
+.btn-4     { grid-area: four; }
+.btn-5     { grid-area: five; }
+.btn-6     { grid-area: six; }
+.btn-add   { grid-area: add; }
+
+.btn-1     { grid-area: one; }
+.btn-2     { grid-area: two; }
+.btn-3     { grid-area: three; }
+.btn-eq    { grid-area: eq; }
+
+.btn-0     { grid-area: zero; }
+.btn-dot   { grid-area: dot; }
+
+/* Style chung cho nút */
+.btn {
+  height: 48px;
+  font-size: 18px;
+  border-radius: 8px;
+  border: 1px solid #bbb;
+  background: linear-gradient(#fff, #e6e6e6);
+  cursor: pointer;
+}
+
+/* Làm nút 0 kéo dài 2 cột (đã xử lý bằng grid-area "zero" được đặt 2 lần) */
