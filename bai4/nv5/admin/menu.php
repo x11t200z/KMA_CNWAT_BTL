@@ -29,5 +29,6 @@
 
 <ul class="menunv4">
     <li><a href="index.php?page=home">Home</a></li>
+    <li><a href="index.php?page=upload">Upload</a></li>
     <li><a href="pages/logout.php">Logout</a></li>
 </ul>

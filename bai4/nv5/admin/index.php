@@ -5,7 +5,7 @@ $page = $_GET['page'] ?? 'home'; //Mặc định là trang Home
 session_start();
 
 // Kiểm tra session xem đã được tạo chưa, nếu chưa thì đưa người dùng trở lại trang đăng nhập
-if(!isset($_SESSION['username']) || !isset($_SESSION['password'])) {
+if (!isset($_SESSION['username']) || !isset($_SESSION['password'])) {
     header('Location: ../index.php?page=login');
     //../pages/login.php
     exit;
@@ -45,13 +45,19 @@ if ($_SESSION['username'] != 'admin' || $_SESSION['password'] != 'admin') {
             <?php include '../../nv1_template/pages/left.php'; ?>
         </div>
         <div style="width:80%; padding: 30px;">
-            <?php 
+            <?php
             switch ($page) {
                 case 'home':
                     include 'pages/home.php';
                     break;
-                case'logout':
+                case 'logout':
                     include 'pages/logout.php';
+                    break;
+                case 'upload':
+                    include 'pages/upload.php';
+                    break;
+                default:
+                    include 'pages/home.php';
                     break;
             }
             ?>
