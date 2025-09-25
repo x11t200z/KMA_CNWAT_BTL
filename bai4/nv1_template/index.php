@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Website Demo</title>
+    <title>Nhiệm vụ 1 - Template</title>
     <style>
         body {
             margin: 0;

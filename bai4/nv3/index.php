@@ -7,7 +7,7 @@ $page = $_GET['page'] ?? 'home'; //Mặc định là trang Home
 
 <head>
     <meta charset="UTF-8">
-    <title>Website Demo</title>
+    <title>Nhiệm vụ 3</title>
     <style>
         body {
             margin: 0;
