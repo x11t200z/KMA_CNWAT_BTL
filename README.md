@@ -1,14 +1,15 @@
-# 📘 Công nghệ Web An Toàn – Bài Tập
+# 📘 Công nghệ Web An Toàn – Bài Tập Lớn
 
 ## 📌 Giới thiệu
 
 Đây là project môn **Công nghệ Web An Toàn** tại Học viện Kỹ thuật Mật mã.  
-Project bao gồm các bài tập thực hành sử dụng **HTML, CSS và JavaScript** nhằm xây dựng các trang web cơ bản, luyện tập kỹ năng frontend và hiểu cách lập trình web an toàn hơn.
+Project bao gồm các bài tập thực hành sử dụng **HTML, CSS và JavaScript, PHP, XAMPP** nhằm xây dựng các trang web cơ bản và hiểu cách lập trình web an toàn hơn.
 
 ---
 
 ## 📂 Nội dung
 ### 🔹 Bài tập 1: Setup môi trường XAMPP 
+- Mình thực hiện trên Windows
 ### 🔹 Bài tập 2: HTML & CSS
 
 - Ôn tập và vận dụng HTML, CSS để xây dựng giao diện web.
@@ -57,37 +58,25 @@ Project bao gồm các bài tập thực hành sử dụng **HTML, CSS và JavaS
 
 ---
 
-## ⚙️ Môi trường thực hành
+### 🔹 Bài tập 4: PHP với CSDL
+- Bài tập này được chia ra thành các nhiệm vụ
+  - Nhiệm vụ 1: Tạo template
+  - Nhiệm vụ 2: Sử dụng template
+  - Nhiệm vụ 3: Lấy dữ liệu và gửi dữ liệu
+  - Nhiệm vụ 4: GetForm
+  - Nhiệm vụ 5: Session
+  - 
 
-- **Phần mềm cần thiết**:
-    
-    - Trình soạn thảo: VS Code / Sublime Text / Notepad++
+
+## ⚙️ Môi trường mình sử dụng để thực hành
+
+- **Phần mềm**:
+    - Trình soạn thảo: VS Code
+      -  Extension "Open PHP/HTML/JS In Browser" để mở các file PHP trên XAMPP mà không phải cất công nhập đường dẫn, các extension để lập trình với PHP (vì VS Code không hỗ trợ sẵn)
+    - Web server: XAMPP
         
-    - Web server: XAMPP hoặc tương tự
-        
-- **Yêu cầu phần cứng**:
+- **Trình duyệt**: Chrome
     
-    - Máy tính tối thiểu: Intel Core i3, 2GB RAM, 50GB HDD
-        
-- **Trình duyệt**: Chrome / Firefox / Edge
-    
-
----
-
-## 🚀 Cách chạy project
-
-1. Clone project:
-    
-    `git clone https://github.com/<username>/<repo-name>.git`
-    
-2. Mở các file `.html` trong trình duyệt để chạy trực tiếp.  
-    Hoặc đặt project trong thư mục web server (htdocs nếu dùng XAMPP).
-    
-3. Truy cập qua `http://localhost/<tên-thư-mục>` để xem toàn bộ website.
-    
-
----
-
 ## 👨‍💻 Tác giả
 
 - Họ tên: **Lưu Đức Thắng**
