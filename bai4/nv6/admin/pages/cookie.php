@@ -24,11 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 }
-if (isset($_GET['delete'])) {
-    echo "Đã nhận tham số delete: " . $_GET['delete'];
-} else {
-    echo "Chưa nhận được tham số delete";
-}
+
 // Xóa bookmark
 if (isset($_GET['delete']) && isset($bookmarks[$_GET['delete']])) {
     unset($bookmarks[$_GET['delete']]);
