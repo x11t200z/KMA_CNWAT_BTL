@@ -4,11 +4,9 @@ $page = $_GET['page'] ?? 'home'; //Mặc định là trang Home
 <!-- index.php -->
 <!DOCTYPE html>
 <html>
-<title>Nhiệm vụ 5</title>
-
 <head>
     <meta charset="UTF-8">
-    <title>Website Demo</title>
+    <title>Nhiệm vụ 5</title>
     <style>
         body {
             margin: 0;

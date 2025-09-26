@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Website Demo</title>
+    <title>Trang resultRegister</title>
     <style>
         body {
             margin: 0;

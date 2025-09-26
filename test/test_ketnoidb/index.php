@@ -4,9 +4,10 @@ $page = $_GET['page'] ?? 'home'; //Mặc định là trang Home
 <!-- index.php -->
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
-    <title>Nhiệm vụ 4</title>
+    <title>Test việc kết nối database</title>
     <style>
         body {
             margin: 0;
@@ -28,14 +29,8 @@ $page = $_GET['page'] ?? 'home'; //Mặc định là trang Home
                 case 'home':
                     include 'pages/home.php';
                     break;
-                case 'register':
-                    include 'pages/register.php';
-                    break;
-                case 'registerProcess':
-                    include 'pages/registerProcess.php';
-                    break;
-                case 'contact':
-                    include 'pages/contact.php';
+                case 'login':
+                    include 'pages/login.php';
                     break;
             }
             ?>

@@ -51,8 +51,8 @@ if ($_SESSION['username'] != 'admin' || $_SESSION['password'] != 'admin') {
                 case 'logout':
                     include 'pages/logout.php';
                     break;
-                case 'upload':
-                    include 'pages/upload.php';
+                case 'cookie':
+                    include 'pages/cookie.php';
                     break;
                 default:
                     include 'pages/home.php';
