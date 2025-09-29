@@ -65,7 +65,7 @@ Project bao gồm các bài tập thực hành sử dụng **HTML, CSS và JavaS
   - Nhiệm vụ 3: Lấy dữ liệu và gửi dữ liệu
   - Nhiệm vụ 4: GetForm
   - Nhiệm vụ 5: Session
-  - 
+  - Nhiệm vụ 6: Cookie
 
 
 ## ⚙️ Môi trường mình sử dụng để thực hành
@@ -74,6 +74,10 @@ Project bao gồm các bài tập thực hành sử dụng **HTML, CSS và JavaS
     - Trình soạn thảo: VS Code
       -  Extension "Open PHP/HTML/JS In Browser" để mở các file PHP trên XAMPP mà không phải cất công nhập đường dẫn, các extension để lập trình với PHP (vì VS Code không hỗ trợ sẵn)
     - Web server: XAMPP
+      - Trong quá trình dùng XAMPP có gặp lỗi này khi tắt XAMPP:
+      - ![alt text](/img/image.png)
+      - Sửa lỗi: https://stackoverflow.com/questions/38676374/why-xampp-control-panel-shows-an-error-access-denied-upon-launch#:~:text=Xampp%2Dcontrol.ini%20for,Reply
+      - Nói chung là cấp full quyền cho file `xampp-control.ini` thay vì mặc định chỉ có read 
         
 - **Trình duyệt**: Chrome
     
