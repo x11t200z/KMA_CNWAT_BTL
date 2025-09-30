@@ -17,11 +17,11 @@ $page = $_GET['page'] ?? 'home'; //Mặc định là trang Home
 </head>
 
 <body>
-    <?php include '../nv1_template/pages/head.php'; ?>
+    <?php include '../../nv1_template/pages/head.php'; ?>
     <?php include 'menu.php'; ?>
     <div style="display:flex;">
         <div style="width:20%;">
-            <?php include '../nv1_template/pages/left.php'; ?>
+            <?php include '../../nv1_template/pages/left.php'; ?>
         </div>
         <div style="width:80%; padding: 30px;">
             <?php
@@ -29,11 +29,8 @@ $page = $_GET['page'] ?? 'home'; //Mặc định là trang Home
                 case 'home':
                     include 'pages/home.php';
                     break;
-                case 'listStudent':
-                    include 'pages/listStudent.php';
-                    break;
-                case 'addStudent':
-                    include 'pages/addStudent.php';
+                case 'login':
+                    include 'pages/login.php';
                     break;
                 default: 'home';
                     include 'pages/home.php';
@@ -44,7 +41,7 @@ $page = $_GET['page'] ?? 'home'; //Mặc định là trang Home
         </div>
     </div>
 
-    <?php include '../nv1_template/pages/footer.php'; ?>
+    <?php include '../../nv1_template/pages/footer.php'; ?>
 </body>
 
 </html>
