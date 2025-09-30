@@ -8,12 +8,6 @@
     <meta charset="UTF-8">
     <title><?php echo CONTACT_PAGE; ?></title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
         .container {
             max-width: 600px;
             margin: 0 auto;
