@@ -70,7 +70,7 @@ if (isset($_GET['min_price']) || isset($_GET['max_price']) || isset($_GET['categ
         .header input[type="text"] {}
 
         .header button {
-            background: #f90;
+            background: rgba(222, 222, 222, 1);
             border: none;
             cursor: pointer;
         }

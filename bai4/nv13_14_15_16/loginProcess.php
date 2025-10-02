@@ -24,9 +24,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location:./admin/index.php"); // trang quản trị
             exit;
         } else {
+            echo "<script>
+                alert('Đăng nhập thành công!');
+                window.location.href = 'index.php';
+            </script>";
             header("Location: index.php"); // quay về trang mua hàng
-            sleep(5);
-
             exit;
         }
     } else {
