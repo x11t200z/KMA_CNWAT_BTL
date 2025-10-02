@@ -49,7 +49,7 @@ if (isset($_GET['min_price']) || isset($_GET['max_price']) || isset($_GET['categ
 
         .header {
             width: 100%;
-            background: #333;
+            background: #007bff;
             padding: 10px 0px;
             color: white;
             display: flex;

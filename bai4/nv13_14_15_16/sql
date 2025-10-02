@@ -22,22 +22,7 @@ CREATE TABLE User (
     Phone VARCHAR(15),
     Role ENUM('customer','admin') DEFAULT 'customer'
 );
-CREATE TABLE `Order` (
-    OrderID INT AUTO_INCREMENT PRIMARY KEY,
-    UserID INT,
-    OrderDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    Status ENUM('pending','processing','completed','canceled') DEFAULT 'pending',
-    FOREIGN KEY (UserID) REFERENCES User(UserID)
-);
-CREATE TABLE OrderDetail (
-    OrderDetailID INT AUTO_INCREMENT PRIMARY KEY,
-    OrderID INT,
-    ProductID INT,
-    Quantity INT NOT NULL,
-    Price DECIMAL(15,2) NOT NULL,
-    FOREIGN KEY (OrderID) REFERENCES `Order`(OrderID),
-    FOREIGN KEY (ProductID) REFERENCES Product(ProductID)
-);
+
 -- Category
 INSERT INTO Category (CategoryName) VALUES 
 ('Laptop Dell'), ('Laptop HP'), ('Laptop Asus'), ('Laptop Lenovo');
