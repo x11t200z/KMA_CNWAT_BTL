@@ -79,6 +79,7 @@ if (isset($_GET['id'])) {
             <h2><?= htmlspecialchars($product['ProductName']) ?></h2>
             <p><strong>Loại:</strong> <?= htmlspecialchars($product['CategoryName']) ?></p>
             <p class="price"><?= number_format($product['Price'], 0, ',', '.') ?> VND</p>
+            <p><strong>Số lượng:</strong> <?= $product['Quantity'] ?></p>
             <p><strong>Mô tả:</strong><br><?= nl2br(htmlspecialchars($product['Description'])) ?></p>
             <a href="cart.php?action=add&id=<?= $product['ProductID'] ?>">Thêm vào giỏ hàng</a>
         </div>
